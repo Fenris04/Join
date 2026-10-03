@@ -1,4 +1,4 @@
-Join
+#Join
 What is Join?
 Join is a Kanban-based project management tool designed to help you organize tasks, manage projects, and collaborate with others.
 
