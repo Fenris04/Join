@@ -1,0 +1,291 @@
+.add_task_dialog {
+  margin: auto;
+  padding: 0px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 0px 4px 0px var(--button_shadow);
+}
+
+.add_task_dialog::backdrop {
+  background-color: var(--button_shadow);
+}
+
+h3 {
+  font-size: 61px;
+}
+
+.add_task {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 60px 74px;
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 24px;
+  height: 24px;
+  color: var(--main_color);
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+}
+
+.close:hover {
+  background-color: buttonface;
+}
+
+.close > img {
+  width: 13px;
+  height: 13px;
+}
+
+.highlighted_button > img {
+  width: 16px;
+  height: 12px;
+}
+
+h6 {
+  font-size: 61px;
+}
+
+.task_board_dialog {
+  margin: auto;
+  width: 525px;
+  padding: 0px;
+  border: none;
+  border-radius: 30px;
+}
+
+.task_board_dialog::backdrop {
+  background-color: var(--button_shadow);
+}
+
+.task_board {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 40px;
+}
+
+.task_board > p {
+  overflow: auto;
+  max-height: 150px;
+}
+
+.task_board p {
+  font-size: 20px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.category > p {
+  padding: 4px 24px;
+  font-size: 23px;
+  color: white;
+  background-color: var(--contact_color_11);
+  border-radius: 8px;
+}
+
+.expiration,
+.relevance {
+  display: flex;
+  text-align: left;
+  gap: 25px;
+}
+
+.relevance > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.relevance img {
+  width: 17px;
+}
+
+.subtitle {
+  color: var(--main_color);
+}
+
+.delete_edit {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
+}
+
+.task_board_buttons {
+  display: flex;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+}
+
+.task_board_buttons > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task_board_buttons p {
+  font-size: 16px;
+}
+
+.task_board_buttons:hover {
+  font-weight: 700;
+}
+
+.task_board_buttons img {
+  width: 24px;
+  height: 24px;
+}
+
+.task_board_contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task_board_names {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0px;
+}
+
+.task_board_names > li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 7px 16px;
+}
+
+.task_board_footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checklist_subtask {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0px;
+}
+
+.subtask {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 16px;
+  height: 32px;
+}
+
+.subtask:hover {
+  border-radius: 10px;
+  background-color: var(--menu_color);
+}
+
+.subtask > p {
+  font-size: 16px;
+}
+
+.subtask_checkbox_label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.subtask_checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.subtask_checkbox_custom {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--main_color);
+  border-radius: 3px;
+}
+
+.subtask_checkbox:checked + .subtask_checkbox_custom::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--main_color);
+  transform: translate(-50%, -55%);
+}
+
+.verification {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 74px;
+  padding: 25px 30px;
+  margin: 0;
+  background-color: var(--main_color);
+  border: none;
+  border-radius: 30px;
+  z-index: 3;
+}
+
+.verification_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+}
+
+.verification_content > p {
+  font-size: 20px;
+}
+
+.card_navigation {
+  text-align: start;
+  gap: 5px;
+  position: fixed;
+  padding: 0px;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  color: white;
+}
+
+.swap_dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.swap_dialog > p {
+  margin-bottom: 11px;
+}
+
+.swap_dialog > div {
+  padding: 8px 8px 0px 8px;
+}

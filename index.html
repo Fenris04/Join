@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/colors.css" />
+    <link rel="stylesheet" href="styles/loginResponsive.css" />
+
+    <script src="./script.js" defer></script>
+
+    <link
+      rel="shortcut icon"
+      href="../assets/img/general/logoFavicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body onload="initSignIn()">
+    <div class="page_shell">
+      <header class="site_header content_limit">
+        <img
+          class="signup_logo"
+          src="./assets/img/general/logoFavicon.svg"
+          alt="Logo of Join"
+        />
+
+        <div class="signup_area login_fade">
+          <span>Not a Join user?</span>
+
+          <button
+            class="button button__primary"
+            type="button"
+            onclick="window.location.href = 'pages/signUp.html'"
+          >
+            Sign up
+          </button>
+        </div>
+      </header>
+
+      <main class="main_content content_limit login_fade">
+        <section class="login_card">
+          <div class="title_block">
+            <h1>Log in</h1>
+            <div class="title_underline"></div>
+          </div>
+
+          <form novalidate>
+            <div class="form_group">
+              <label for="email" class="sr_only">Email</label>
+
+              <div class="input_wrap">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="Email"
+                  onblur="validateLoginEmail()"
+                />
+
+                <span class="field_icon">
+                  <img src="./assets/img/login/mail.svg" alt="Email icon" />
+                </span>
+              </div>
+
+              <p class="error_message" id="emailError"></p>
+            </div>
+
+            <div class="form_group">
+              <label for="password" class="sr_only">Password</label>
+
+              <div class="input_wrap">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="Password"
+                  onblur="validateLoginPassword()"
+                />
+
+                <span class="field_icon">
+                  <img src="./assets/img/login/lock.svg" alt="Password icon" />
+                </span>
+              </div>
+
+              <p class="error_message" id="passwordError"></p>
+            </div>
+
+            <p class="form_status" id="formStatus"></p>
+
+            <div class="form_actions">
+              <button class="button button__primary" type="submit">
+                Log in
+              </button>
+
+              <button
+                class="button button__secondary"
+                type="button"
+                id="guestLoginButton"
+              >
+                Guest Log in
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer class="footer login_fade">
+        <a href="pages/privacyPolicyPreLogin.html"> Privacy Policy </a>
+
+        <a href="pages/legalNoticePreLogin.html"> Legal notice </a>
+
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+      </footer>
+    </div>
+    <div class="logout_notification" id="logoutNotification">
+      You logged out successfully.
+    </div>
+  </body>
+</html>

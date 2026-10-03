@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Board</title>
+    <link rel="stylesheet" href="../styles/colors.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/addTaskDropdown.css" />
+    <link rel="stylesheet" href="../styles/addTask.css" />
+    <link rel="stylesheet" href="../styles/addTaskResponsive.css" />
+    <link rel="stylesheet" href="../styles/standard.css" />
+    <link rel="stylesheet" href="../styles/standardClasses.css" />
+    <link rel="stylesheet" href="../styles/board.css" />
+    <link rel="stylesheet" href="../styles/standardResponsive.css">
+    <link rel="stylesheet" href="../styles/board_dialog.css" />
+    <link rel="stylesheet" href="../styles/boardResponsive.css" />
+    <script src="../scripts/standard.js"></script>
+    <script src="../scripts/addTaskTemplate.js"></script>
+    <script src="../scripts/addTaskContacts.js"></script>
+    <script src="../scripts/addTaskInteractions.js"></script>
+    <script src="../scripts/addTask.js"></script>
+    <script src="../scripts/contactsTemplates.js"></script>
+    <script src="../scripts/boardTemplate.js"></script>
+    <script src="../scripts/boardAddTaskTemplate.js"></script>
+    <script src="../scripts/boardMiscellaneous.js"></script>
+    <script src="../scripts/board.js"></script>
+    <link rel="shortcut icon" href="../assets/img/general/logoFavicon.svg" type="image/x-icon"/>
+  </head>
+  <body onload="initialise()">
+    <dialog id="dialog" onclick="closeSpecificDialog('dialog')"></dialog>
+    <aside class="desktop">
+      <a class="logo" href="summary.html"><img src="../assets/img/general/joinLogo.svg" alt="Logo of Join" /></a>
+      <article>
+        <section class="menu">
+          <a class="another_page" href="../pages/summary.html">
+            <img src="../assets/img/aside/summary.svg" alt="Summary Icon" />
+            <p>Summary</p>
+          </a>
+          <a class="another_page" href="../pages/addTask.html">
+            <img src="../assets/img/aside/addTask.svg" alt="Task Icon" />
+            <p>Add Task</p>
+          </a>
+          <a class="current_page" href="../pages/board.html">
+            <img src="../assets/img/aside/boardValidate.svg" alt="Board Icon" />
+            <p>Board</p>
+          </a>
+          <a class="another_page" href="../pages/contacts.html">
+            <img src="../assets/img/aside/contacts.svg" alt="Contacts Icon" />
+            <p>Contacts</p>
+          </a>
+        </section>
+        <section class="legal_necessities">
+          <a class="policies" href="../pages/privacyPolicy.html">
+            <p>Privacy Policy</p>
+          </a>
+          <a class="policies" href="../pages/legalNotice.html">
+            <p>Legal Notice</p>
+          </a>
+        </section>
+      </article>
+    </aside>
+    <article class="main_content">
+      <header>
+        <p>Kanban Project Management Tool</p>
+        <img src="../assets/img/general/logoFavicon.svg" alt="Logo" />
+        <section class="header_right">
+          <a href="../pages/help.html">
+            <img src="../assets/img/general/help.svg" alt="Help Button" />
+          </a>
+          <section>
+            <button class="profile_icon" onclick="openDialog('nav')">
+               <p id="userInitial"></p>
+            </button>
+            <dialog class="navigation" id="nav" onclick="closeDialog('nav')">
+              <div class="subnavigation" onclick="stopPropagation(event)">
+                <a class="mobile" href="../pages/help.html">Help</a>
+                <a href="../pages/legalNotice.html">Legal Notice</a>
+                <a href="../pages/privacyPolicy.html">Privacy Policy</a>
+                <a id="logoutButton" href="../index.html">Log out</a>
+              </div>
+            </dialog>
+          </section>
+        </section>
+      </header>
+      <main>
+        <section class="main_title">
+          <h1>Board</h1>
+          <div>
+            <section class="search_wrapper">
+              <input class="search" id="searchField" type="text" placeholder="Find Task"/>
+              <div class="search_button" aria-label="Search">
+                <button type="button">
+                  <img class="search_icon" src="../assets/img/board/search.svg" alt="Search icon"/>
+                </button>
+              </div>
+            </section>
+            <button class="new_task desktop" onclick="openSpecificDialog(null, null, 'toDo', null)">
+              <p>Add Task</p>
+              <p>+</p>
+            </button>
+            <button class="new_task mobile">
+              <a href="../pages/addTask.html">+</a>
+            </button>
+          </div>
+        </section>
+        <div class="search_mobile mobile">
+          <section class="search_wrapper_mobile">
+            <input
+              class="search"
+              id="searchField"
+              type="text"
+              placeholder="Find Task"
+            />
+            <div class="search_button" aria-label="Search">
+              <button type="button">
+                <img
+                  class="search_icon"
+                  src="../assets/img/board/search.svg"
+                  alt="Search icon"
+                />
+              </button>
+            </div>
+          </section>
+        </div>
+        <article class="kanban">
+          <section class="column" ondrop="changeStatus('toDo')" ondragover="allowDrop(event)">
+            <div class="column_title">
+              <h2>To do</h2>
+              <button class="adding_task desktop" onclick="openSpecificDialog(null, null, 'toDo', null)">
+                +
+              </button>
+              <button class="adding_task mobile">
+                <a href="../pages/addTask.html">+</a>
+              </button>
+            </div>
+            <ul class="column_list" id="toDo"></ul>
+          </section>
+          <section class="column" ondrop="changeStatus('inProgress')" ondragover="allowDrop(event)">
+            <div class="column_title">
+              <h2>In progress</h2>
+              <button class="adding_task desktop" onclick="openSpecificDialog(null, null, 'inProgress', null)">
+                +
+              </button>
+              <button class="adding_task mobile">
+                <a href="../pages/addTask.html">+</a>
+              </button>
+            </div>
+            <ul class="column_list" id="inProgress"></ul>
+          </section>
+          <section class="column" ondrop="changeStatus('awaitFeedback')" ondragover="allowDrop(event)">
+            <div class="column_title">
+              <h2>Await Feedback</h2>
+              <button class="adding_task desktop" onclick="openSpecificDialog(null, null, 'awaitFeedback', null)">
+                +
+              </button>
+              <button class="adding_task mobile">
+                <a href="../pages/addTask.html">+</a>
+              </button>
+            </div>
+            <ul class="column_list" id="awaitFeedback"></ul>
+          </section>
+          <section class="column" ondrop="changeStatus('done')" ondragover="allowDrop(event)">
+            <div class="column_title">
+              <h2>Done</h2>
+            </div>
+            <ul class="column_list" id="done"></ul>
+          </section>
+        </article>
+      </main>
+      <footer class="mobile">
+        <section>
+          <a class="another_page" href="../pages/summary.html">
+            <img src="../assets/img/aside/summary.svg" alt="Summary Icon" />
+            <p>Summary</p>
+          </a>
+        </section>
+        <section>
+          <a class="another_page" href="../pages/addTask.html">
+            <img src="../assets/img/aside/addTask.svg" alt="Task Icon" />
+            <p>Add Task</p>
+          </a>
+        </section>
+        <section>
+          <a class="current_page" href="../pages/board.html">
+            <img src="../assets/img/aside/boardValidate.svg" alt="Board Icon" />
+            <p>Board</p>
+          </a>
+        </section>
+        <section>
+          <a class="another_page" href="../pages/contacts.html">
+            <img src="../assets/img/aside/contacts.svg" alt="Contacts Icon" />
+            <p>Contacts</p>
+          </a>
+        </section>
+      </footer>
+    </article>
+  </body>
+</html>

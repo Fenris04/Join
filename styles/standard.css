@@ -1,0 +1,99 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Inter";
+  line-height: 120%;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  overflow: hidden;
+  min-height: 100dvh;
+}
+
+main {
+  background-color: var(--bg_color);
+  flex: 1;
+}
+
+h1 {
+  font-size: 61px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  width: 232px;
+  background-color: var(--main_color);
+}
+
+aside > img {
+  display: flex;
+  padding-left: 66px;
+  padding-right: 66px;
+}
+
+aside > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 116px;
+  background-color: white;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+header > p {
+  font-size: 20px;
+}
+
+header > img {
+  display: none;
+  width: 32px;
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+  body > * {
+    display: none !important;
+  }
+
+  body::before {
+    content: "Please rotate your device to portrait mode.";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #f6f7f8;
+  }
+}

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+
+    <link rel="stylesheet" href="../styles/colors.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/standard.css" />
+    <link rel="stylesheet" href="../styles/standardClasses.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/signUp.css" />
+    <link rel="stylesheet" href="../styles/signUpResponsive.css" />
+
+    <script src="../scripts/signup.js"></script>
+
+    <link
+      rel="shortcut icon"
+      href="../assets/img/general/logoFavicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body onload="initSignUp()">
+    <div class="page_shell">
+        <img
+          class="signup_page_logo"
+          src="../assets/img/general/logoFavicon.svg"
+          alt="Logo of Join"
+        />
+
+      <main class="main_content content_limit signup_content">
+        <div class="SignUp_Container">
+          <button
+            class="back_button"
+            type="button"
+            onclick="window.location.href = '../index.html'"
+          >
+            <img
+              src="../assets/img/general/arrow.svg"
+              alt="Back Button"
+            />
+          </button>
+
+          <div class="title_block">
+            <h1>Sign up</h1>
+            <div class="title_underline"></div>
+          </div>
+
+          <form class="signUpForm" novalidate>
+            <div class="form_group">
+              <div class="input_wrap">
+                <img
+                  src="../assets/img/login/person.svg"
+                  alt="Person Icon"
+                  class="field_icon"
+                />
+
+                <label for="username" class="sr_only">
+                  Username
+                </label>
+
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Name"
+                  onblur="validateUsername()"
+                  required
+                />
+              </div>
+
+              <div
+                class="error_message"
+                id="usernameError"
+              ></div>
+            </div>
+
+            <div class="form_group">
+              <div class="input_wrap">
+                <img
+                  src="../assets/img/login/mail.svg"
+                  alt="Email Icon"
+                  class="field_icon"
+                />
+
+                <label for="email" class="sr_only">
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  onblur="validateSignUpEmail()"
+                  required
+                />
+              </div>
+
+              <div
+                class="error_message"
+                id="emailError"
+              ></div>
+            </div>
+
+            <div class="form_group">
+              <div class="input_wrap">
+                <img
+                  src="../assets/img/login/lock.svg"
+                  alt="Password Icon"
+                  class="field_icon"
+                />
+
+                <label for="password" class="sr_only">
+                  Password
+                </label>
+
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  onblur="validatePassword()"
+                  required
+                />
+              </div>
+
+              <div
+                class="error_message"
+                id="passwordError"
+              ></div>
+            </div>
+
+            <div class="form_group confirm_password">
+              <div class="input_wrap">
+                <img
+                  src="../assets/img/login/lock.svg"
+                  alt="Confirm Password Icon"
+                  class="field_icon"
+                />
+
+                <label for="confirmPassword" class="sr_only">
+                  Confirm Password
+                </label>
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  onblur="validateConfirmPassword()"
+                  required
+                />
+              </div>
+
+              <div
+                class="error_message"
+                id="confirmPasswordError"
+              ></div>
+            </div>
+
+            <div class="checkbox_Group">
+              <input
+                type="checkbox"
+                id="acceptPrivacy"
+                name="acceptPrivacy"
+                required
+              />
+
+              <label for="acceptPrivacy">
+                I accept the
+                <a
+                  href="../pages/privacyPolicyPreLogin.html"
+                  target="_blank"
+                >
+                  Privacy Policy
+                </a>
+              </label>
+            </div>
+
+            <div
+              class="error_message"
+              id="privacyError"
+            ></div>
+
+            <button
+              type="submit"
+              class="highlighted_button"
+              id="signUpButton"
+            >
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </main>
+
+      <div
+        class="overlay"
+        id="successOverlay"
+        hidden
+      >
+        <div class="overlay_box">
+          <p>You Signed Up successfully</p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <a href="../pages/privacyPolicyPreLogin.html">
+          Privacy Policy
+        </a>
+
+        <a href="../pages/legalNoticePreLogin.html">
+          Legal notice
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>

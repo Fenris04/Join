@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="../styles/colors.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/standard.css" />
+    <link rel="stylesheet" href="../styles/contacts.css" />
+    <link rel="stylesheet" href="../styles/addTaskDropdown.css" />
+    <link rel="stylesheet" href="../styles/addTask.css" />
+    <link rel="stylesheet" href="../styles/standardClasses.css" />
+    <link rel="stylesheet" href="../styles/standardResponsive.css">
+    <link rel="stylesheet" href="../styles/addTaskResponsive.css" />
+
+    <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-database-compat.js"></script>
+
+    <script src="../scripts/firebaseConfig.js"></script>
+    <script src="../scripts/standard.js"></script>
+    <script src="../scripts/loadUser.js"></script>
+    <script src="../scripts/addTaskTemplate.js"></script>
+    <script src="../scripts/addTaskInteractions.js"></script>
+    <script src="../scripts/addTaskContacts.js"></script>
+    <script src="../scripts/addTask.js"></script>
+    <script src="../scripts/contactsTemplates.js"></script>
+    
+
+    <link
+      rel="shortcut icon"
+      href="../assets/img/general/logoFavicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body onload="initAddTaskPage()">
+    <aside class="desktop">
+      <a class="logo" href="summary.html"><img src="../assets/img/general/joinLogo.svg" alt="Logo of Join" /></a>
+
+      <article>
+        <section class="menu">
+          <a class="another_page" href="../pages/summary.html">
+            <img src="../assets/img/aside/summary.svg" alt="Summary Icon" />
+            <p>Summary</p>
+          </a>
+
+          <a class="current_page" href="../pages/addTask.html">
+            <img
+              src="../assets/img/aside/addTaskValidate.svg"
+              alt="Task Icon"
+            />
+            <p>Add Task</p>
+          </a>
+
+          <a class="another_page" href="../pages/board.html">
+            <img src="../assets/img/aside/board.svg" alt="Board Icon" />
+            <p>Board</p>
+          </a>
+
+          <a class="another_page" href="../pages/contacts.html">
+            <img src="../assets/img/aside/contacts.svg" alt="Contacts Icon" />
+            <p>Contacts</p>
+          </a>
+        </section>
+
+        <section class="legal_necessities">
+          <a class="policies" href="../pages/privacyPolicy.html">
+            <p>Privacy Policy</p>
+          </a>
+
+          <a class="policies" href="../pages/legalNotice.html">
+            <p>Legal Notice</p>
+          </a>
+        </section>
+      </article>
+    </aside>
+
+    <article class="main_content">
+      <header>
+        <img
+          class="mobile_header_logo"
+          src="../assets/img/general/logoFavicon.svg"
+          alt="Join Logo"
+        />
+        
+        <p>Kanban Project Management Tool</p>
+
+        <section class="header_right">
+          <a href="../pages/help.html">
+            <img src="../assets/img/general/help.svg" alt="Help Button" />
+          </a>
+
+          <section>
+            <button class="profile_icon" id="profileButton" type="button">
+             <p id="userInitial"></p>
+            </button>
+
+            <dialog class="navigation" id="nav">
+              <div class="subnavigation" id="subnavigation">
+                <a class="mobile" href="../pages/help.html">Help</a>
+                <a href="../pages/legalNotice.html">Legal Notice</a>
+                <a href="../pages/privacyPolicy.html">Privacy Policy</a>
+                <a href="../index.html" id="logoutButton">Log out</a>
+              </div>
+            </dialog>
+          </section>
+        </section>
+      </header>
+
+      <main class="add_task_page">
+        <section class="add_task_head">
+          <h1>Add Task</h1>
+        </section>
+
+        <article class="add_task_main">
+          <section class="add_task_left">
+            <div class="add_task_input">
+              <p>Title<span>*</span></p>
+
+              <input
+                class="input_areas"
+                id="taskTitle"
+                type="text"
+                placeholder="Enter a title"
+                onblur="validateInput('taskTitle')"
+                required
+              />
+              <p class="error_message hide" id="taskTitleError">This field ist required</p>
+            </div>
+
+            <div class="add_task_input">
+              <p>Description</p>
+
+              <textarea
+                class="description"
+                id="description"
+                placeholder="Enter a Description"
+              ></textarea>
+            </div>
+
+            <div class="add_task_input">
+              <p>Due Date<span>*</span></p>
+
+              <input 
+                class="input_areas"
+                id="dueDate"
+                type="date"
+                onblur="validateInput('dueDate')"
+                required
+              />
+              <p class="error_message hide" id="dueDateError">This field ist required</p>
+            </div>
+          </section>
+
+          <div class="add_task_middle"></div>
+
+          <section class="add_task_right">
+            <div class="add_task_input">
+              <p>Priority</p>
+
+              <section class="priority">
+                <button
+                  class="priority_button"
+                  type="button"
+                  data-priority="Urgent"
+                >
+                  Urgent
+
+                  <img
+                    src="../assets/img/task/urgent.svg"
+                    alt="Urgent priority"
+                  />
+                </button>
+
+                <button
+                  class="priority_button"
+                  type="button"
+                  data-priority="Medium"
+                >
+                  Medium
+
+                  <img
+                    src="../assets/img/task/medium.svg"
+                    alt="Medium priority"
+                  />
+                </button>
+
+                <button
+                  class="priority_button"
+                  type="button"
+                  data-priority="Low"
+                >
+                  Low
+
+                  <img src="../assets/img/task/low.svg" alt="Low priority" />
+                </button>
+              </section>
+            </div>
+
+            <div class="add_task_input">
+              <p>Assigned To</p>
+
+              <div class="select_areas" id="assignedDropdown">
+                <button class="select_areas_toggle" type="button">
+                  <span class="select_areas_value">
+                    Select contacts to assign
+                  </span>
+
+                  <span class="select_areas_arrow">▾</span>
+                </button>
+
+                <div class="select_areas_menu" id="contactList"></div>
+
+                <input type="hidden" id="assigned" name="assigned" value="" />
+
+                <div class="assigned_user" id="assignedUser"></div>
+              </div>
+            </div>
+
+            <div class="add_task_input">
+              <p>Category<span>*</span></p>
+
+              <div class="select_areas" id="categoryDropdown">
+                <button
+                class="select_areas_toggle"
+                id="selectAreaCategory"
+                type="button"
+              >
+                  <span class="select_areas_value"> Select task category </span>
+
+                  <span class="select_areas_arrow">▾</span>
+                </button>
+
+                <div class="select_areas_menu">
+                  <button
+                    class="select_areas_option"
+                    type="button"
+                    data-value="Technical Task"
+                    onblur="validateInput('category')"
+                  >
+                    Technical Task
+                  </button>
+
+                  <button
+                    class="select_areas_option"
+                    type="button"
+                    data-value="User Story"
+                    onblur="validateInput('category')"
+                  >
+                    User Story
+                  </button>
+                </div>
+
+                <input
+                  type="hidden"
+                  id="category"
+                  name="category"
+                  value="" />
+              </div>
+              <p class="error_message hide" id="categoryError">This field ist required</p>
+            </div>
+
+            <div class="add_task_input">
+              <p>Subtasks</p>
+
+              <section class="subtask_wrapper">
+                <input
+                  class="input_areas"
+                  id="subtaskInput"
+                  type="text"
+                  placeholder="Add new subtask"
+                />
+
+                <div class="subtask_validating">
+                  <button id="clearSubtaskButton" type="button">
+                    <img src="../assets/img/general/close.svg" alt="Clear" />
+                  </button>
+
+                  <div class="subtask_middle"></div>
+
+                  <button
+                    class="subtask_check"
+                    id="addSubtaskButton"
+                    type="button"
+                  >
+                    <img
+                      src="../assets/img/summary/checkValidate.svg"
+                      alt="Add subtask"
+                    />
+                  </button>
+                </div>
+              </section>
+            </div>
+
+            <div class="subtasks_displayer">
+              <ul class="subtasks_list" id="subtasks"></ul>
+            </div>
+          </section>
+        </article>
+
+        <section class="add_task_footer">
+          <p><span>*</span>This field is required</p>
+
+          <div class="footer_buttons">
+            <button class="cancel" id="clearTaskButton" type="button">
+              Clear
+
+              <img src="../assets/img/general/close.svg" alt="Clear" />
+            </button>
+
+            <button
+              class="highlighted_button"
+              id="createTaskButton"
+              type="button"
+              onclick="validateInput('taskTitle'); validateInput('dueDate'); validateInput('category')">
+              Create Task
+
+              <img src="../assets/img/general/check.svg" alt="Create task" />
+            </button>
+          </div>
+        </section>
+      </main>
+    </article>
+    <div class="task_message" id="taskMessage">Task added to board</div>
+    <footer class="mobile">
+      <section>
+        <a class="another_page" href="../pages/summary.html">
+          <img src="../assets/img/aside/summary.svg" alt="Summary Icon" />
+          <p>Summary</p>
+        </a>
+      </section>
+      <section>
+        <a class="current_page" href="../pages/addTask.html">
+          <img src="../assets/img/aside/addTaskValidate.svg" alt="Task Icon" />
+          <p>Add Task</p>
+        </a>
+      </section>
+      <section>
+        <a class="another_page" href="../pages/board.html">
+          <img src="../assets/img/aside/board.svg" alt="Board Icon" />
+          <p>Board</p>
+        </a>
+      </section>
+      <section>
+        <a class="another_page" href="../pages/contacts.html">
+          <img src="../assets/img/aside/contacts.svg" alt="Contacts Icon" />
+          <p>Contacts</p>
+        </a>
+      </section>
+    </footer>
+  </body>
+</html>

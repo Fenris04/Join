@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Legal Notice</title>
+
+    <link rel="stylesheet" href="../styles/colors.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/standard.css" />
+    <link rel="stylesheet" href="../styles/standardClasses.css" />
+    <link rel="stylesheet" href="../styles/information.css" />
+    <link rel="stylesheet" href="../styles/standardResponsive.css">
+    <link rel="stylesheet" href="../styles/informationResponsive.css" />
+
+    <script src="../scripts/loadUser.js"></script>
+    <script src="../scripts/standard.js" defer></script>
+    
+    <link
+      rel="shortcut icon"
+      href="../assets/img/general/logoFavicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body onload="initInformationPage()">
+    <aside class="desktop">
+      <a class="logo" href="summary.html"><img src="../assets/img/general/joinLogo.svg" alt="Logo of Join" /></a>
+
+      <article>
+        <section class="menu">
+          <a class="another_page" href="../pages/summary.html">
+            <img src="../assets/img/aside/summary.svg" alt="Summary Icon" />
+            <p>Summary</p>
+          </a>
+
+          <a class="another_page" href="../pages/addTask.html">
+            <img src="../assets/img/aside/addTask.svg" alt="Task Icon" />
+            <p>Add Task</p>
+          </a>
+
+          <a class="another_page" href="../pages/board.html">
+            <img src="../assets/img/aside/board.svg" alt="Board Icon" />
+            <p>Board</p>
+          </a>
+
+          <a class="another_page" href="../pages/contacts.html">
+            <img src="../assets/img/aside/contacts.svg" alt="Contacts Icon" />
+            <p>Contacts</p>
+          </a>
+        </section>
+
+        <section class="legal_necessities">
+          <a class="another_page policies" href="../pages/privacyPolicy.html">
+            <p>Privacy Policy</p>
+          </a>
+
+          <a class="current_page policies" href="../pages/legalNotice.html">
+            <p>Legal Notice</p>
+          </a>
+        </section>
+      </article>
+    </aside>
+
+    <main class="Information_Content">
+      <header>
+        <img
+          class="mobile_header_logo"
+          src="../assets/img/general/logoFavicon.svg"
+          alt="Join Logo"
+        />
+
+        <p>Kanban Project Management Tool</p>
+
+        <section class="header_right">
+          <a href="../pages/help.html">
+            <img src="../assets/img/general/help.svg" alt="Help Button" />
+          </a>
+
+          <section>
+            <button class="profile_icon" id="profileButton" type="button">
+              <p id="userInitial"></p>
+            </button>
+
+            <dialog class="navigation" id="nav">
+              <div class="subnavigation" id="subnavigation">
+                <a class="mobile" href="../pages/help.html">Help</a>
+                <a href="../pages/legalNotice.html">Legal Notice</a>
+                <a href="../pages/privacyPolicy.html">Privacy Policy</a>
+                <a href="../index.html" id="logoutButton">Log out</a>
+              </div>
+            </dialog>
+          </section>
+        </section>
+      </header>
+
+      <div class="Information_Text">
+        <div class="information_title_row">
+          <h1>Legal Notice</h1>
+
+          <button class="back_button" type="button" onclick="history.back()">
+            <img
+              src="../assets/img/general/arrow.svg"
+              alt="Go back"
+            />
+          </button>
+        </div>
+
+        <section class="Legal_Section">
+          <h2>Imprint</h2>
+
+          <p>
+            Marc Mähling<br />
+            Erik Somow<br />
+            Adrian Huber<br />
+            Königsallee 1862<br />
+            36547 Leipzig<br />
+            Germany
+          </p>
+        </section>
+
+        <section class="Legal_Section">
+          <h2>Contact</h2>
+
+          <p>
+            Phone: +49 (0) 123 44 55 66<br />
+            Email:
+            <a href="">info@beispielfirma.de</a>
+          </p>
+        </section>
+
+        <section class="Legal_Section">
+          <p>
+            Source:
+            <a
+              href="https://www.e-recht24.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              e-recht24.de
+            </a>
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="mobile">
+      <section>
+        <a class="another_page" href="../pages/summary.html">
+          <img src="../assets/img/aside/summary.svg" alt="Summary Icon" />
+          <p>Summary</p>
+        </a>
+      </section>
+
+      <section>
+        <a class="another_page" href="../pages/addTask.html">
+          <img src="../assets/img/aside/addTask.svg" alt="Task Icon" />
+          <p>Add Task</p>
+        </a>
+      </section>
+
+      <section>
+        <a class="another_page" href="../pages/board.html">
+          <img src="../assets/img/aside/board.svg" alt="Board Icon" />
+          <p>Board</p>
+        </a>
+      </section>
+
+      <section>
+        <a class="another_page" href="../pages/contacts.html">
+          <img src="../assets/img/aside/contacts.svg" alt="Contacts Icon" />
+          <p>Contacts</p>
+        </a>
+      </section>
+    </footer>
+  </body>
+</html>
